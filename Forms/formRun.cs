@@ -28,6 +28,7 @@ namespace TelePrompter
             
             // Speed text
             timer1.Interval = configsBridge.DefaultSpeed.Value;
+            timer1.Enabled = true;
 
             // Text First position
             labelText.Top = (int)configsBridge.TextFirstPosition;
