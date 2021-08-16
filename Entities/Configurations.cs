@@ -7,6 +7,8 @@ namespace Entities
 {
     public class Configurations
     {
+
+        public string TeleprompterText { get; private set; }
         public DefaultSpeed DefaultSpeed { get; private set; }
         public TextFirstPosition TextFirstPosition { get; private set; }
         public Color BackGround { get; private set; }
@@ -25,10 +27,16 @@ namespace Entities
         public Configurations(int trackBarSpeedMin, int trackBarSpeedMax, int trackBarSpeedValue,
                               TextFirstPosition textFirsPosition, LetterAndBackColorOption option, int fontSize)
         {
+            SetTeleprompterText(null);
             DefaultSpeed = new DefaultSpeed(trackBarSpeedMin, trackBarSpeedMax, trackBarSpeedValue);
             SetTextFirstPosition(textFirsPosition);
             SetLetterAndBackColor(option);
             SetFontSize(fontSize);
+        }
+
+        public void SetTeleprompterText(string teleprompterText)
+        {
+            TeleprompterText = teleprompterText;
         }
 
         public void SetDefaultSpeed(int trackBarSpeedValue)

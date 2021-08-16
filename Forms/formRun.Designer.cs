@@ -68,7 +68,6 @@ namespace TelePrompter
             this.labelText.Name = "labelText";
             this.labelText.Size = new System.Drawing.Size(707, 65535);
             this.labelText.TabIndex = 0;
-            this.labelText.Text = resources.GetString("labelText.Text");
             this.labelText.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // timer1
@@ -160,6 +159,7 @@ namespace TelePrompter
             this.ClientSize = new System.Drawing.Size(847, 450);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(500, 435);
             this.Name = "formRun";

@@ -8,10 +8,10 @@ namespace TelePrompter
 {
     public partial class formSettings : Form
     {
-        public string[] FileText { set; get; }
 
         private Configurations Config = new Configurations();
 
+        private formRun _formRun;
 
         public formSettings()
         {
@@ -22,7 +22,7 @@ namespace TelePrompter
 
             Config = new Configurations(trackBarSpeed.Minimum, trackBarSpeed.Maximum, trackBarSpeed.Value, GetTextFirstPosition(),
                                         GetLetterAndBackGroundColor(), GetFontSize());
-
+            _formRun = new formRun(Config);
         }
 
 
@@ -36,11 +36,14 @@ namespace TelePrompter
             {
                 textBoxFilePath.Text = openFileDialog.FileName;
 
-                string[] LineTextFile = File.ReadAllLines(textBoxFilePath.Text);
-
-                foreach (string line in LineTextFile)
+                try
                 {
-                    Console.WriteLine(line);
+                    string TextFile = File.ReadAllText(textBoxFilePath.Text);
+                    Config.SetTeleprompterText(TextFile);
+                }
+                catch (Exception Ex)
+                {
+                    ;
                 }
             }
 
@@ -48,8 +51,6 @@ namespace TelePrompter
 
         private void buttonRun_Click(object sender, EventArgs e)
         {
-            formRun _formRun = new formRun(Config);
-
             Config.SetDefaultSpeed(trackBarSpeed.Value);
             Config.SetTextFirstPosition(GetTextFirstPosition());
             Config.SetLetterAndBackColor(GetLetterAndBackGroundColor());
@@ -57,6 +58,7 @@ namespace TelePrompter
 
             // Show dialog (formRun) and select behind Dialogo not permitted
             _formRun.ShowDialog();
+
         }
 
         private TextFirstPosition GetTextFirstPosition()
@@ -83,5 +85,7 @@ namespace TelePrompter
         {
             return Convert.ToInt32(comboBoxFontSize.SelectedIndex);
         }
+
+       
     }
 }

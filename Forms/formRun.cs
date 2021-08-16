@@ -24,6 +24,8 @@ namespace TelePrompter
 
         private void formRun_Load(object sender, EventArgs e)
         {
+            labelText.Text = configsBridge.TeleprompterText;
+            
             // Speed text
             timer1.Interval = configsBridge.DefaultSpeed.Value;
 
@@ -37,8 +39,6 @@ namespace TelePrompter
 
             //Font size
             labelText.Font = new Font(labelText.Font.FontFamily.Name, configsBridge.FontSize);
-
-            Console.WriteLine(configsBridge);
 
         }
 
@@ -59,6 +59,11 @@ namespace TelePrompter
                     await Task.Delay(90);
                     keyUpPanel.BackColor = System.Drawing.Color.FromArgb(0, 0, 64);
                 }
+                finally
+                {
+                    // Speed text
+                    timer1.Interval = configsBridge.DefaultSpeed.Value;
+                }
             }
             else if (e.KeyCode == Keys.Down)
             {
@@ -74,6 +79,11 @@ namespace TelePrompter
                     keyDownPanel.BackColor = System.Drawing.Color.FromArgb(64, 0, 0);
                     await Task.Delay(90);
                     keyDownPanel.BackColor = System.Drawing.Color.FromArgb(0, 0, 64);
+                }
+                                finally
+                {
+                    // Speed text
+                    timer1.Interval = configsBridge.DefaultSpeed.Value;
                 }
             }
             else if (e.KeyCode == Keys.Enter)
@@ -134,12 +144,11 @@ namespace TelePrompter
                 ;
             }
 
-            // Speed text
-            timer1.Interval = configsBridge.DefaultSpeed.Value;
-
             Console.WriteLine(configsBridge);
 
         }
+
+
     }
 }
 
