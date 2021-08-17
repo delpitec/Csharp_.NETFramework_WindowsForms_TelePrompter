@@ -12,7 +12,7 @@ Because the speaker can look straight at the lens while reading the script, the 
  &nbsp;<br><br> 
 **Project steps:**<br>
 > Form Settings: <br>
-  ✅ Menu desing<br>
+  ✅ Menu design<br>
   ✅ Store user's configuration and send to Form Run<br>
   ✅ Read text file, store it and send to Form Run<br> 
 
